@@ -31,7 +31,7 @@ $ mkfs.vfat -F 32 /dev/sdb -I
 ```
 ## PASO 5 – Pasamos la imagen al pendrive
 ```
-$ dd if=debian-8.7.1-amd64-CD-1.iso of=/dev/sdb
+$ dd if=debian-live-10.8.0-amd64-gnome.iso of=/dev/sdb
 ```
 Un poco de paciencia y esperamos a que finalice la operación y listo, ya tenemos nuestro USB arrancable preparado para funcionar.
 
@@ -41,7 +41,7 @@ Si queremos que salga una barra de progreso al pasar la ISO al pendrive tendremo
 $ apt-get install pv
 ```
 ```
-$ dd if=debian-8.7.1-amd64-CD-1.iso |pv| dd of=/dev/sdb
+$ dd if=debian-live-10.8.0-amd64-gnome.iso |pv| dd of=/dev/sdb
 ```
 ```
 (1,4 GB) copiados, 398,941 s, 3,5 MB/s
@@ -49,7 +49,7 @@ $ dd if=debian-8.7.1-amd64-CD-1.iso |pv| dd of=/dev/sdb
 Si lo queremos más chulo debemos especificarle a pv el tamaño del ISO en MB así graficará la barra de progreso con el siguiente comando:
 
 ```
-$ dd if=debian-8.7.1-amd64-CD-1.iso |pv -s 2355M | dd of=/dev/sdb
+$ dd if=debian-live-10.8.0-amd64-gnome.iso |pv -s 2355M | dd of=/dev/sdb
 ```
 ```
 4588160+0 registros escritos
