@@ -59,12 +59,9 @@ password:raspberry
 nano /etc/default/keyboard;
 XKBLAYOUT="latam"
 ```
+
 ```
-killall wpa_supplicant;
-/usr/local/bin/wpa_supplicant -B -c/etc/wpa_supplicant.conf -iwlan0;
-```
-```
-nano /etc/wpa_supplicant/wpa_supplicant.conf;
+nano /etc/wpa_supplicant/wpa_supplicant/wpa_supplicant.conf;
 ```
 ```
 network={
@@ -73,6 +70,14 @@ network={
         key_mgmt=WPA-PSK
         psk="MIPASSWORD"
 }
+```
+```
+killall wpa_supplicant;
+wpa_supplicant -B -c /etc/wpa_supplicant/wpa_supplicant.conf -iwlan0;
+```
+```
+systemctl enable ssh;
+reboot;
 ```
 ```
 auto wlan0
@@ -93,7 +98,6 @@ iface wlan0 inet dhcp
 ```
 apt-get install -y \
      aptitude \
-     openssh-server \
      apt-transport-https \
      ca-certificates \
      curl \
@@ -102,9 +106,7 @@ apt-get install -y \
      fail2ban \
      ntf
 ```
-```
-systemctl enable ssh
-```
+
 
 ### 10. Instalar firmas GPG del repo de Docker
 
@@ -124,17 +126,22 @@ echo "deb [arch=armhf] https://download.docker.com/linux/debian \
 ### 12. Instalar Docker
 
 ```
-sudo apt-get update && sudo apt-get install -y docker-ce docker-compose
+sudo apt-get update && sudo apt-get install -y docker.io docker-ce docker-compose
+sudo systemctl enable docker && sudo systemctl start docker I get the following
+
 ```
 
 ### 13. Agregar usuario al grupo docker y desloguearse y volverse a loguear
 
 ```
-sudo usermod -a -G docker kbs
+sudo usermod -a -G docker pi
 #(logout and login)
 ```
 
 ### 14. Crear docker-compose
+```
+nano docker-compose.yml;
+```
 ```
 version: "2"
 
