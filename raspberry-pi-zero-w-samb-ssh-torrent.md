@@ -103,8 +103,7 @@ apt-get install -y \
      curl \
      gnupg2 \
      software-properties-common \
-     fail2ban \
-     ntf
+     fail2ban
 ```
 
 
@@ -126,8 +125,8 @@ echo "deb [arch=armhf] https://download.docker.com/linux/debian \
 ### 12. Instalar Docker
 
 ```
-sudo apt-get update && sudo apt-get install -y docker.io docker-ce docker-compose
-sudo systemctl enable docker && sudo systemctl start docker I get the following
+sudo apt-get update && sudo apt-get install -y docker-ce docker-compose
+sudo systemctl enable docker && sudo systemctl start docker
 
 ```
 
@@ -143,6 +142,8 @@ sudo usermod -a -G docker pi
 nano docker-compose.yml;
 ```
 ```
+## docker-compose para correr rtorrent sobre raspberry
+
 version: "2"
 
 services:
@@ -150,15 +151,27 @@ services:
   samba:
     image: dperson/samba:rpi
     restart: always
-    command: '-u "pi;password" -s "media;/media;yes;no"'
+    command: '-u "pi;password" -s "media;/media;yes;no" -s "downloads;/downloads;yes;no"'
     stdin_open: true
     tty: true
     ports:
       - 139:130
       - 445:445
     volumes:
-      - /usr/share/zoneinfo/America/Argentina/Buenos_Aires:/etc/localtime
+      - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
       - /home/pi/media:/media
+      - /home/pi/downloads:/downloads
+
+  rtorrent:
+    image: pablokbs/rutorrent-armhf
+    ports:
+      - 80:80
+      - 51413:51413
+      - 6881:6881/udp
+    volumes:
+      - /home/pi/torrents-config/rtorrent:/config/rtorrent
+      - /home/pi/downloads:/downloads
+    restart: always
 ```
 
 
