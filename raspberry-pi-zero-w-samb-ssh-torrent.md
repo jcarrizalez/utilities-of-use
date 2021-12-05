@@ -96,14 +96,15 @@ iface wlan0 inet dhcp
 ## PASO 9. Instalar paquetes necesarios
 
 ```
-apt-get install -y \
+sudo apt-get install -y \
      aptitude \
      apt-transport-https \
      ca-certificates \
      curl \
      gnupg2 \
      software-properties-common \
-     fail2ban
+     fail2ban \
+     ntfs-3g
 ```
 
 
@@ -117,7 +118,7 @@ sudo apt-key fingerprint 0EBFCD88
 ### 11. Agregar repo de Docker
 
 ```
-echo "deb [arch=armhf] https://download.docker.com/linux/debian \
+sudo echo "deb [arch=armhf] https://download.docker.com/linux/debian \
      $(lsb_release -cs) stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list
 ```
