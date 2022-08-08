@@ -41,7 +41,7 @@ Si queremos que salga una barra de progreso al pasar la ISO al pendrive tendremo
 $ apt-get install pv
 ```
 ```
-$ dd if=debian-live-10.8.0-amd64-gnome.iso |pv| dd of=/dev/sdb
+$ dd if=debian-live-10.8.0-amd64-gnome.iso | pv | dd of=/dev/sdb
 ```
 ```
 (1,4 GB) copiados, 398,941 s, 3,5 MB/s
@@ -49,7 +49,7 @@ $ dd if=debian-live-10.8.0-amd64-gnome.iso |pv| dd of=/dev/sdb
 Si lo queremos más chulo debemos especificarle a pv el tamaño del ISO en MB así graficará la barra de progreso con el siguiente comando:
 
 ```
-$ dd if=debian-live-10.8.0-amd64-gnome.iso |pv -s 2355M | dd of=/dev/sdb
+$ dd if=debian-live-10.8.0-amd64-gnome.iso | pv -s 2355M | dd of=/dev/sdb
 ```
 ```
 4588160+0 registros escritos
