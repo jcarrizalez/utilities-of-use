@@ -61,7 +61,7 @@ XKBLAYOUT="latam"
 ```
 
 ```
-nano /etc/wpa_supplicant/wpa_supplicant/wpa_supplicant.conf;
+nano /etc/wpa_supplicant/wpa_supplicant.conf;
 ```
 ```
 network={
