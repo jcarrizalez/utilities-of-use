@@ -104,9 +104,11 @@ sudo apt-get install -y \
      gnupg2 \
      software-properties-common \
      fail2ban \
-     ntfs-3g
+     ntfs-3g \
+     network-manager \
+     network-manager-gnome \
+     openvpn
 ```
-
 
 ### 10. Instalar firmas GPG del repo de Docker
 
@@ -180,3 +182,5 @@ services:
 ```
 docker-compose up -d
 ```
+
+
